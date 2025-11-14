@@ -19,3 +19,23 @@ Infinite new extension file: https://lsrelay-extensions-production.s3.amazonaws.
 
 Checks browser data via app telemetry. github.com/Lightspeed-Systems
 has lots of private repos with valuable data, like LSConfigGo AlertAgent
+
+disable chromium local storage - maybe bypass
+
+Cache poisoning attack
+```
+(S = localStorage.getItem("blockSettings")),
+(f = JSON.parse(S || '{"categories": {}}')),
+
+localStorage.setItem("story-data", JSON.stringify(e));
+localStorage.getItem("story-data")```
+
+attack:
+```// devtools
+localStorage.setItem("blockSettings", JSON.stringify({
+  "categories": {
+    "57": 0,  //  phishing allowed
+    "61": 0,  // social media allowed
+    "71": 0   // streaming allowed
+  }
+}));```
